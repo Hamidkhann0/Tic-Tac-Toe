@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+.boxes{
+    display: flex;
+    height: 180px;
+    width: 180px;
+    margin-top: 10px;
+    background: #1f3540;
+    margin: 10px;
+    align-self: center;
+    cursor: pointer;
+}
+
+.boxes img{
+    margin: 50px;
+}
