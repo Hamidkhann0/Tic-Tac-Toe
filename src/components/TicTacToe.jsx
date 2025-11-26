@@ -21,25 +21,20 @@ const TicTacToe = () => {
 
   let box_arr = [box1,box2,box3,box4,box5,box6,box7,box8,box9]
 
-  const toggle = (e,num)=>{
-      if(lock){
-        return 0;
-      }
+const toggle = (e, num) => {
+  if (lock || data[num] !== "") return;
 
-      if(count%2===0){
-        e.target.innerHTML = `<img src=${cross_icon} className="h-50 w-50 m-auto"/>`
-        data[num] = "X";
-        setcount(++count)
-      }
-
-      else{
-        e.target.innerHTML = `<img src=${circle_icon} className="h-50 w-50 m-auto"/>`
-        data[num] = "O";
-        setcount(++count)
-      }
-
-      checkwin();
+  if (count % 2 === 0) {
+    e.target.innerHTML = `<img src=${cross_icon} className="h-50 w-50 m-auto"/>`;
+    data[num] = "X";
+  } else {
+    e.target.innerHTML = `<img src=${circle_icon} className="h-50 w-50 m-auto"/>`;
+    data[num] = "O";
   }
+
+  setcount(prev => prev + 1);
+  checkwin();
+};
 
   const checkwin = ()=>{
     if(data[0] === data[1] && data[1] === data[2] && data[2] !== ""){
@@ -97,8 +92,8 @@ const reset = ()=>{
             <div className="boxes" ref={box3} onClick={(e)=>{toggle(e,2)}}></div>
           </div>
           <div className="row2">
-            <div className="boxes" ref={box4} onClick={(e)=>{toggle(e,4)}}></div>
-            <div className="boxes" ref={box5} onClick={(e)=>{toggle(e,3)}}></div>
+            <div className="boxes" ref={box4} onClick={(e)=>{toggle(e,3)}}></div>
+            <div className="boxes" ref={box5} onClick={(e)=>{toggle(e,4)}}></div>
             <div className="boxes" ref={box6} onClick={(e)=>{toggle(e,5)}}></div>
           </div>
           <div className="row3">
